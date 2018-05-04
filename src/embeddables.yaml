@@ -1,0 +1,25 @@
+
+Dogma\Geolocation\Position:
+    type: embeddable
+    fields:
+        latitude: { type: float }
+        longitude: { type: float }
+
+Dogma\Math\FloatInterval:
+    type: embeddable
+    fields:
+        start: { type: float }
+        end: { type: float }
+
+Dogma\Math\IntInterval:
+    type: embeddable
+    fields:
+        start: { type: integer }
+        end: { type: integer }
+
+Dogma\Math\Vector3:
+    type: embeddable
+    fields:
+        x: { type: float }
+        y: { type: float }
+        z: { type: float }

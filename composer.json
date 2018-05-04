@@ -1,0 +1,36 @@
+{
+    "name": "dogma/dogma-doctrine",
+    "type": "library",
+    "description": "Doctrine type handlers for Dogma types.",
+    "homepage": "http://github.com/paranoiq/dogma-doctrine",
+    "license": ["BSD-3-Clause"],
+    "authors": [
+        {
+            "name": "Vlasta Neubauer",
+            "homepage": "http://www.paranoiq.cz"
+        }
+    ],
+    "require": {
+        "php-64bit": "^7.1.0",
+        "doctrine/orm": "~2.6",
+        "tracy/tracy": "~2.4"
+    },
+    "require-dev": {
+        "consistence/coding-standard": "~2.3",
+        "jakub-onderka/php-console-highlighter": "~0.3",
+        "jakub-onderka/php-parallel-lint": "~0.8",
+        "nette/tester": "~1.7",
+        "phing/phing": "~2.16",
+        "phpstan/phpstan": "~0.8",
+        "slevomat/coding-standard": "~4.3",
+        "squizlabs/php_codesniffer": "~3.2",
+        "spell-checker/spell-checker": "~0.3",
+        "spell-checker/dictionary-en": "~0.1"
+    },
+    "autoload": {
+        "classmap": ["src"]
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

@@ -1,0 +1,8 @@
+
+parameters:
+    ignoreErrors:
+        # strange
+        - '~^Parameter #1 $value of static method Dogma\Math\Decimal\Decimal::parse() expects string, string|int|null given.~'
+
+        # misleading
+        - '~^Parameter #1 $value of class Dogma\Math\Decimal\Decimal constructor expects string|int, int|string|Dogma\Math\Decimal\Decimal given.~' # if (!$x instanceof C)
