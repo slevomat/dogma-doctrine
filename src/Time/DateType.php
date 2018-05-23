@@ -10,6 +10,7 @@
 namespace Dogma\Doctrine\Time;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\DateType as DoctrineDateType;
 use Doctrine\DBAL\Types\Type;
 use Dogma\Time\Date;
@@ -22,6 +23,25 @@ class DateType extends DoctrineDateType
     public function getName(): string
     {
         return self::NAME;
+    }
+
+    /**
+     * @param mixed $value
+     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     *
+     * @return mixed The database representation of the value.
+     */
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    {
+        if ($value === null) {
+            return $value;
+        } elseif ($value instanceof Date) {
+            return $value->format($platform->getDateFormatString());
+        } elseif ($value instanceof \DateTimeInterface) {
+            return $value->format($platform->getDateFormatString());
+        }
+
+        throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', 'DateTimeInterface', 'Dogma\\Time\\Date']);
     }
 
     /**

@@ -10,6 +10,7 @@
 namespace Dogma\Doctrine\Time;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\TimeType as DoctrineTimeType;
 use Doctrine\DBAL\Types\Type;
 use Dogma\Time\Time;
@@ -22,6 +23,19 @@ class TimeType extends DoctrineTimeType
     public function getName(): string
     {
         return self::NAME;
+    }
+
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    {
+        if ($value === null) {
+            return $value;
+        } elseif ($value instanceof Time) {
+            return $value->format($platform->getTimeFormatString());
+        } elseif ($value instanceof \DateTimeInterface) {
+            return $value->format($platform->getTimeFormatString());
+        }
+
+        throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', 'DateTimeInterface', 'Dogma\\Time\\Time']);
     }
 
     /**
