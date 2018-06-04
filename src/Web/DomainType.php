@@ -16,7 +16,7 @@ use Dogma\Web\Domain;
 class DomainType extends StringType
 {
 
-    public const NAME = 'domain_type';
+    public const NAME = 'domain';
 
     public function getName(): string
     {

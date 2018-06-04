@@ -15,7 +15,7 @@ use Dogma\Language\Encoding;
 class EncodingType extends StringEnumType
 {
 
-    public const NAME = 'encoding_type';
+    public const NAME = 'encoding';
 
     public function getName(): string
     {

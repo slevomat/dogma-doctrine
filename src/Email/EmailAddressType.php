@@ -16,7 +16,7 @@ use PHPStan\Type\StringType;
 class EmailAddressType extends StringType
 {
 
-    public const NAME = 'email_address_type';
+    public const NAME = 'email_address';
 
     public function getName(): string
     {

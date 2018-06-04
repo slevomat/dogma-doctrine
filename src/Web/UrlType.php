@@ -16,7 +16,7 @@ use Dogma\Web\Url;
 class UrlType extends StringType
 {
 
-    public const NAME = 'domain_type';
+    public const NAME = 'url';
 
     public function getName(): string
     {

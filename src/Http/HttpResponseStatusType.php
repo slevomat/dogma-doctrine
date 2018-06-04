@@ -15,7 +15,7 @@ use Dogma\Http\HttpResponseStatus;
 class HttpResponseStatusType extends IntEnumType
 {
 
-    public const NAME = 'http_response_status_type';
+    public const NAME = 'http_response_status';
 
     public function getName(): string
     {

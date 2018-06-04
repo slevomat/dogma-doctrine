@@ -15,7 +15,7 @@ use Dogma\Doctrine\Enum\StringEnumType;
 class CountryType extends StringEnumType
 {
 
-    public const NAME = 'country_type';
+    public const NAME = 'country';
 
     public function getName(): string
     {

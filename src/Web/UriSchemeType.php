@@ -15,7 +15,7 @@ use Dogma\Web\UriScheme;
 class UriSchemeType extends StringEnumType
 {
 
-    public const NAME = 'uri_scheme_type';
+    public const NAME = 'uri_scheme';
 
     public function getName(): string
     {

@@ -15,7 +15,7 @@ use Dogma\Web\Tld;
 class TldType extends StringEnumType
 {
 
-    public const NAME = 'tld_type';
+    public const NAME = 'tld';
 
     public function getName(): string
     {

@@ -15,7 +15,7 @@ use Dogma\Http\HttpMethod;
 class HttpMethodType extends StringEnumType
 {
 
-    public const NAME = 'http_method_type';
+    public const NAME = 'http_method';
 
     public function getName(): string
     {

@@ -16,7 +16,7 @@ use PHPStan\Type\StringType;
 class HostType extends StringType
 {
 
-    public const NAME = 'host_type';
+    public const NAME = 'host';
 
     public function getName(): string
     {

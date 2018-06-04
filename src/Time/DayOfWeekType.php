@@ -15,7 +15,7 @@ use Dogma\Time\DayOfWeek;
 class DayOfWeekType extends StringEnumType
 {
 
-    public const NAME = 'day_of_week_type';
+    public const NAME = 'day_of_week';
 
     public function getName(): string
     {

@@ -15,7 +15,7 @@ use Dogma\Email\EmailAddress;
 class EmailHeaderType extends StringEnumType
 {
 
-    public const NAME = 'email_address_type';
+    public const NAME = 'email_header';
 
     public function getName(): string
     {

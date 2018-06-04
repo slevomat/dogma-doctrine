@@ -15,7 +15,7 @@ use Dogma\Http\HttpHeader;
 class HttpHeaderType extends StringEnumType
 {
 
-    public const NAME = 'http_header_type';
+    public const NAME = 'http_header';
 
     public function getName(): string
     {

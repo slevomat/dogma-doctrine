@@ -15,7 +15,7 @@ use Dogma\Time\DateTimeUnit;
 class DateTimeUnitType extends StringEnumType
 {
 
-    public const NAME = 'date_time_unit_type';
+    public const NAME = 'date_time_unit';
 
     public function getName(): string
     {

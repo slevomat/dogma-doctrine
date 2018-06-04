@@ -15,7 +15,7 @@ use Dogma\Language\Language;
 class LanguageType extends StringEnumType
 {
 
-    public const NAME = 'language_type';
+    public const NAME = 'language';
 
     public function getName(): string
     {

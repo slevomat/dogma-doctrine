@@ -16,7 +16,7 @@ use Dogma\Language\Locale\Locale;
 class LocaleType extends StringType
 {
 
-    public const NAME = 'locale_type';
+    public const NAME = 'locale';
 
     public function getName(): string
     {

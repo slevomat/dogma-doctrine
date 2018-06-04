@@ -15,7 +15,7 @@ use Dogma\Time\Month;
 class MonthType extends StringEnumType
 {
 
-    public const NAME = 'month_type';
+    public const NAME = 'month';
 
     public function getName(): string
     {

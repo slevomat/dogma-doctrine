@@ -15,7 +15,7 @@ use Dogma\Language\Script;
 class ScriptType extends StringEnumType
 {
 
-    public const NAME = 'script_type';
+    public const NAME = 'script';
 
     public function getName(): string
     {
