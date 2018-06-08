@@ -13,7 +13,7 @@
     "require": {
         "php-64bit": "^7.1.0",
         "doctrine/orm": "~2.6",
-        "tracy/tracy": "~2.4"
+        "dogma/dogma": "~0.1"
     },
     "require-dev": {
         "consistence/coding-standard": "~2.3",
