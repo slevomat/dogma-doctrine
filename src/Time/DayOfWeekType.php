@@ -9,10 +9,10 @@
 
 namespace Dogma\Doctrine\Time;
 
-use Dogma\Doctrine\Enum\StringEnumType;
+use Dogma\Doctrine\Enum\IntEnumType;
 use Dogma\Time\DayOfWeek;
 
-class DayOfWeekType extends StringEnumType
+class DayOfWeekType extends IntEnumType
 {
 
     public const NAME = 'day_of_week';

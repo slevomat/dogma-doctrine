@@ -38,7 +38,7 @@ abstract class IntEnumType extends IntegerType
         /** @var \Dogma\Enum\IntEnum $enumClass */
         $enumClass = $this->getEnumClass();
 
-        return $enumClass::get($value);
+        return $enumClass::get((int) $value);
     }
 
     /**
