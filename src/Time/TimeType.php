@@ -25,6 +25,11 @@ class TimeType extends DoctrineTimeType
         return self::NAME;
     }
 
+    /**
+     * @param mixed $value
+     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @return mixed The database representation of the value.
+     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if ($value === null) {

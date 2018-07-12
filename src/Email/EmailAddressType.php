@@ -44,7 +44,7 @@ class EmailAddressType extends StringType
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
-        return $value instanceof EmailAddress ? $value->getValue() : $value;
+        return $value instanceof EmailAddress ? $value->getAddress() : $value;
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool
