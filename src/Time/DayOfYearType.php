@@ -24,9 +24,9 @@ class DayOfYearType extends IntegerType
     }
 
 	/**
-	 * @param \Dogma\Time\DayOfYear|int|null $value
-	 * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-	 * @return \Dogma\Time\DayOfYear|null
+	 * @param DayOfYear|int|null $value
+	 * @param AbstractPlatform $platform
+	 * @return DayOfYear|null
 	 */
 	public function convertToPHPValue($value, AbstractPlatform $platform): ?DayOfYear
 	{
@@ -38,8 +38,8 @@ class DayOfYearType extends IntegerType
 	}
 
 	/**
-	 * @param \Dogma\Time\DayOfYear|int|null $value
-	 * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+	 * @param DayOfYear|int|null $value
+	 * @param AbstractPlatform $platform
 	 * @return int|null
 	 */
 	public function convertToDatabaseValue($value, AbstractPlatform $platform): ?int

@@ -26,8 +26,8 @@ class DateTimeType extends DoctrineDateTimeType
 
     /**
      * @param mixed $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Time\DateTime|null
+     * @param AbstractPlatform $platform
+     * @return DateTime|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?DateTime
     {

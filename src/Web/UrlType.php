@@ -24,9 +24,9 @@ class UrlType extends StringType
     }
 
     /**
-     * @param \Dogma\Web\Url|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Web\Url|null
+     * @param Url|string|null $value
+     * @param AbstractPlatform $platform
+     * @return Url|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Url
     {
@@ -38,8 +38,8 @@ class UrlType extends StringType
     }
 
     /**
-     * @param \Dogma\Web\Url|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param Url|string|null $value
+     * @param AbstractPlatform $platform
      * @return string|null
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string

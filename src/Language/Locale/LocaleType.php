@@ -24,9 +24,9 @@ class LocaleType extends StringType
     }
 
     /**
-     * @param \Dogma\Language\Locale\Locale|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Language\Locale\Locale|null
+     * @param Locale|string|null $value
+     * @param AbstractPlatform $platform
+     * @return Locale|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Locale
     {
@@ -38,8 +38,8 @@ class LocaleType extends StringType
     }
 
     /**
-     * @param \Dogma\Language\Locale\Locale|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param Locale|string|null $value
+     * @param AbstractPlatform $platform
      * @return string|null
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string

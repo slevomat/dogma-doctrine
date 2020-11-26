@@ -25,9 +25,9 @@ abstract class StringEnumType extends StringType
     }
 
     /**
-     * @param \Dogma\Enum\StringEnum|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Enum\StringEnum|null
+     * @param StringEnum|string|null $value
+     * @param AbstractPlatform $platform
+     * @return StringEnum|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?StringEnum
     {
@@ -35,15 +35,15 @@ abstract class StringEnumType extends StringType
             return $value;
         }
 
-        /** @var \Dogma\Enum\StringEnum $enumClass */
+        /** @var StringEnum $enumClass */
         $enumClass = $this->getEnumClass();
 
         return $enumClass::get($value);
     }
 
     /**
-     * @param \Dogma\Enum\StringEnum|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param StringEnum|string|null $value
+     * @param AbstractPlatform $platform
      * @return string|null
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string

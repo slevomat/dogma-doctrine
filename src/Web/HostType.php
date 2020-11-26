@@ -24,9 +24,9 @@ class HostType extends StringType
     }
 
     /**
-     * @param \Dogma\Web\Host|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Web\Host|null
+     * @param Host|string|null $value
+     * @param AbstractPlatform $platform
+     * @return Host|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Host
     {
@@ -38,8 +38,8 @@ class HostType extends StringType
     }
 
     /**
-     * @param \Dogma\Web\Host|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param Host|string|null $value
+     * @param AbstractPlatform $platform
      * @return string|null
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string

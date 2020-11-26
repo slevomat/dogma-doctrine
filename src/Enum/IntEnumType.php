@@ -25,9 +25,9 @@ abstract class IntEnumType extends IntegerType
     }
 
     /**
-     * @param \Dogma\Enum\IntEnum|int|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Enum\IntEnum|null
+     * @param IntEnum|int|null $value
+     * @param AbstractPlatform $platform
+     * @return IntEnum|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?IntEnum
     {
@@ -35,15 +35,15 @@ abstract class IntEnumType extends IntegerType
             return $value;
         }
 
-        /** @var \Dogma\Enum\IntEnum $enumClass */
+        /** @var IntEnum $enumClass */
         $enumClass = $this->getEnumClass();
 
         return $enumClass::get((int) $value);
     }
 
     /**
-     * @param \Dogma\Enum\IntEnum|int|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param IntEnum|int|null $value
+     * @param AbstractPlatform $platform
      * @return int|null
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?int

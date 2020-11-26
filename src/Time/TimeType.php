@@ -9,6 +9,7 @@
 
 namespace Dogma\Doctrine\Time;
 
+use DateTimeInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\TimeType as DoctrineTimeType;
@@ -27,7 +28,7 @@ class TimeType extends DoctrineTimeType
 
     /**
      * @param mixed $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param AbstractPlatform $platform
      * @return mixed The database representation of the value.
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
@@ -36,7 +37,7 @@ class TimeType extends DoctrineTimeType
             return $value;
         } elseif ($value instanceof Time) {
             return $value->format($platform->getTimeFormatString());
-        } elseif ($value instanceof \DateTimeInterface) {
+        } elseif ($value instanceof DateTimeInterface) {
             return $value->format($platform->getTimeFormatString());
         }
 
@@ -45,8 +46,8 @@ class TimeType extends DoctrineTimeType
 
     /**
      * @param mixed $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Time\Time|null
+     * @param AbstractPlatform $platform
+     * @return Time|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Time
     {

@@ -24,9 +24,9 @@ class DomainType extends StringType
     }
 
     /**
-     * @param \Dogma\Web\Domain|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
-     * @return \Dogma\Web\Domain|null
+     * @param Domain|string|null $value
+     * @param AbstractPlatform $platform
+     * @return Domain|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?Domain
     {
@@ -38,8 +38,8 @@ class DomainType extends StringType
     }
 
     /**
-     * @param \Dogma\Web\Domain|string|null $value
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     * @param Domain|string|null $value
+     * @param AbstractPlatform $platform
      * @return string|null
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
