@@ -38,7 +38,7 @@ class LocaleType extends StringType
     }
 
     /**
-     * @param \Dogma\Enum\StringEnum|string|null $value
+     * @param \Dogma\Language\Locale\Locale|string|null $value
      * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
      * @return string|null
      */

@@ -11,17 +11,96 @@
         }
     ],
     "require": {
-        "php-64bit": "^7.1.0",
-        "doctrine/orm": "~2.6",
+        "php": "^7.3|^8.0",
+        "doctrine/orm": "~2.8",
         "dogma/dogma": "~0.1"
     },
     "require-dev": {
-        "dogma/dogma-dev": "~0.1"
+        "dogma/dogma-dev": "0.1.17"
     },
     "autoload": {
         "classmap": ["src"]
     },
-    "config": {
-        "bin-dir": "bin"
+    "minimum-stability": "dev",
+    "scripts": {
+        "c": "@check",
+        "t": "@test",
+        "tc": "@test-coverage",
+        "da": "composer dump-autoload",
+        "cs": [
+            "@cs-tests",
+            "@cs-src"
+        ],
+
+        "build": [
+            "composer install",
+            "php -r \"@mkdir('log', 0777, true);\"",
+            "php -r \"@mkdir('temp/cache', 0777, true);\"",
+            "rm -rf temp/cache/*"
+        ],
+        "check": [
+            "@stan",
+            "@lint",
+            "@spell",
+            "@cs-src",
+            "@cs-tests"
+        ],
+        "check-all": [
+            "@stan-all",
+            "@lint-all",
+            "@spell",
+            "@cs-tests",
+            "@cs-src"
+        ],
+
+        "test": "sh vendor/bin/tester tests -c tests --colors 1",
+        "test-all": [
+            "@test",
+            "php74 vendor/nette/tester/src/tester tests -c tests --colors 1",
+            "php73 vendor/nette/tester/src/tester tests -c tests --colors 1"
+        ],
+        "test-coverage": "sh vendor/bin/tester tests -c tests --colors 1 -p phpdbg --coverage tests/coverage.html --coverage-src src",
+
+        "stan": "sh vendor/bin/phpstan analyse -c build/phpstan/phpstan.neon -l 8 src tests",
+        "stan-74": "php74 vendor/phpstan/phpstan/phpstan analyse -c build/phpstan/phpstan.neon -l 8 src tests",
+        "stan-all": [
+            "@stan",
+            "@stan-74"
+        ],
+
+        "cs-src": "sh vendor/bin/phpcs --standard=vendor/dogma/dogma-dev/src/CodeSniffer/ruleset.xml --extensions=php --encoding=utf-8 --tab-width=4 -sp src",
+        "cs-tests": "sh vendor/bin/phpcs --standard=vendor/dogma/dogma-dev/src/CodeSniffer/ruleset-tests.xml --extensions=php,phpt --encoding=utf-8 --tab-width=4 -sp tests",
+        "cs-fix": "sh vendor/bin/phpcbf --standard=vendor/dogma/dogma-dev/src/CodeSniffer/ruleset-tests.xml --extensions=php,phpt --encoding=utf-8 --tab-width=4 src tests",
+
+        "spell": "sh vendor/bin/spell-checker -c build/spell-checker/spell-checker.neon --checkDictionaryFiles --memoryLimit 1024M --noLogo",
+
+        "lint": "sh vendor/bin/parallel-lint src tests",
+        "lint-all": [
+            "@lint",
+            "php74 vendor/php-parallel-lint/php-parallel-lint/parallel-lint src tests",
+            "php73 vendor/php-parallel-lint/php-parallel-lint/parallel-lint src tests"
+        ]
+    },
+    "scripts-descriptions": {
+        "c": "\u001B[0;33m⭐Run all checks (shortcut)\u001B[0m",
+        "t": "\u001B[0;33m⭐Run tests (shortcut)\u001B[0m",
+        "tc": "\u001B[0;33m⭐Run tests with code coverage (shortcut)\u001B[0m",
+        "da": "\u001B[0;33m⭐Dump autoloader (shortcut)\u001B[0m",
+        "cs": "\u001B[0;33m⭐Run CS check\u001B[0m",
+        "build": "\u001B[0;33m⭐Run build script\u001B[0m",
+        "check": "\u001B[0;33m⭐Run all checks (tests, phpstan, phpcs, phplint, spell-check)\u001B[0m",
+        "check-all": "\u001B[0;33m⭐Run all checks on all supported PHP versions (7.2, 7.3, 7.4, 8.0)\u001B[0m",
+        "test": "\u001B[0;33m⭐Run tests\u001B[0m",
+        "test-all": "\u001B[0;33m⭐Run tests on all supported PHP versions (7.2, 7.3, 7.4, 8.0)\u001B[0m",
+        "test-coverage": "\u001B[0;33m⭐Run tests with code coverage\u001B[0m",
+        "stan": "\u001B[0;33m⭐Run PHPStan check\u001B[0m",
+        "stan-74": "\u001B[0;33m⭐Run PHPStan check on PHP 7.4\u001B[0m",
+        "stan-all": "\u001B[0;33m⭐Run PHPStan check on PHP 8.0 and 7.4\u001B[0m",
+        "cs-src": "\u001B[0;33m⭐Run CS check on /src\u001B[0m",
+        "cs-tests": "\u001B[0;33m⭐Run CS check on /tests\u001B[0m",
+        "cs-fix": "\u001B[0;33m⭐Run CS check with auto-fixing on /src and /tests\u001B[0m",
+        "spell": "\u001B[0;33m⭐Run spell-checker\u001B[0m",
+        "lint": "\u001B[0;33m⭐Run PHPLint\u001B[0m",
+        "lint-all": "\u001B[0;33m⭐Run PHPLint on all supported PHP versions (7.2, 7.3, 7.4, 8.0)\u001B[0m"
     }
 }
