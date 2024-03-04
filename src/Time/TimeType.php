@@ -11,28 +11,22 @@ namespace Dogma\Doctrine\Time;
 
 use DateTimeInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\ConversionException;
-use Doctrine\DBAL\Types\TimeType as DoctrineTimeType;
+use Doctrine\DBAL\Types\Exception\InvalidType;
 use Doctrine\DBAL\Types\Type;
 use Dogma\Time\Time;
 
-class TimeType extends DoctrineTimeType
+class TimeType extends Type
 {
 
-    public const NAME = Type::TIME;
+    public const NAME = 'time';
 
     public function getName(): string
     {
         return self::NAME;
     }
 
-    /**
-     * @param mixed $value
-     * @param AbstractPlatform $platform
-     * @return mixed The database representation of the value.
-     */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): string|null
+	{
         if ($value === null) {
             return $value;
         } elseif ($value instanceof Time) {
@@ -41,7 +35,7 @@ class TimeType extends DoctrineTimeType
             return $value->format($platform->getTimeFormatString());
         }
 
-        throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', 'DateTimeInterface', 'Dogma\\Time\\Time']);
+        throw InvalidType::new($value, $this->getName(), ['null', 'DateTimeInterface', 'Dogma\\Time\\Time']);
     }
 
     /**
@@ -62,5 +56,10 @@ class TimeType extends DoctrineTimeType
     {
         return true;
     }
+
+	public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
+	{
+		return $platform->getTimeTypeDeclarationSQL($column);
+	}
 
 }

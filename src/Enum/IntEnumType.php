@@ -9,12 +9,13 @@
 
 namespace Dogma\Doctrine\Enum;
 
+use Doctrine\DBAL\ParameterType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\IntegerType;
+use Doctrine\DBAL\Types\Type;
 use Dogma\Enum\IntEnum;
 use Dogma\ShouldNotHappenException;
 
-abstract class IntEnumType extends IntegerType
+abstract class IntEnumType extends Type
 {
 
     abstract protected function getEnumClass(): string;
@@ -55,5 +56,20 @@ abstract class IntEnumType extends IntegerType
     {
         return true;
     }
+
+	public function getBindingType(): ParameterType
+	{
+		return ParameterType::INTEGER;
+	}
+
+	/**
+	 * @param mixed[] $column
+	 * @param AbstractPlatform $platform
+	 * @return string
+	 */
+	public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
+	{
+		return $platform->getIntegerTypeDeclarationSQL($column);
+	}
 
 }

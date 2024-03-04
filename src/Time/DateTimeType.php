@@ -10,19 +10,11 @@
 namespace Dogma\Doctrine\Time;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\DateTimeType as DoctrineDateTimeType;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\DateTimeImmutableType;
 use Dogma\Time\DateTime;
 
-class DateTimeType extends DoctrineDateTimeType
+class DateTimeType extends DateTimeImmutableType
 {
-
-    public const NAME = Type::DATETIME;
-
-    public function getName(): string
-    {
-        return self::NAME;
-    }
 
     /**
      * @param mixed $value

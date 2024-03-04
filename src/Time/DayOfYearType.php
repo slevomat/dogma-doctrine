@@ -9,11 +9,13 @@
 
 namespace Dogma\Doctrine\Time;
 
+use Doctrine\DBAL\ParameterType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\IntegerType;
+use Doctrine\DBAL\Types\Type;
 use Dogma\Time\DayOfYear;
 
-class DayOfYearType extends IntegerType
+class DayOfYearType extends Type
 {
 
     public const NAME = 'day_of_year';
@@ -50,6 +52,16 @@ class DayOfYearType extends IntegerType
 	public function requiresSQLCommentHint(AbstractPlatform $platform): bool
 	{
 		return true;
+	}
+
+	public function getBindingType(): ParameterType
+	{
+		return ParameterType::INTEGER;
+	}
+
+	public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
+	{
+		return $platform->getIntegerTypeDeclarationSQL($column);
 	}
 
 }
